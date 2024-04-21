@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!--
+    ********************************************************************************
+    *                                   COMPATIBILITY                              *
+    ********************************************************************************
+    -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--
+    ********************************************************************************
+    *                                   DESCRIPTION                                *
+    ********************************************************************************
+    -->
+    <title>Whiteboard Demo</title>
+    <meta name="description" content="">
+
+    <!--
+    ********************************************************************************
+    *                                   FAVICON                                    *
+    ********************************************************************************
+    -->
+    <!-- https://www.favicon.cc/?action=icon&file_id=979952 -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <!--
+    ********************************************************************************
+    *                                   CUSTOM STYLING                            *
+    ********************************************************************************
+    -->
+    <link rel="stylesheet" href="style.css" type="text/css">
+
+    <!--
+    ********************************************************************************
+    *                                   CUSTOM SCRIPTS                            *
+    ********************************************************************************
+    -->
+    <script src="writingpanel.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Whiteboard Demo</h1>
+    </header>
+    <main>
+        <div class="panelWrapper">
+            <!-- These must be initialized with width and height! -->
+            <canvas class="hw" id="a" width="2500px" height="2500px"></canvas>
+        </div>
+        <a href="#" class="btn" id="reset">Clear</button>
+        <a href="#" class="btn" id="save">Save</a>
+        <a href="#" class="btn" id="erase">Erase</a>
+    </main>
+
+    <!--
+    ********************************************************************************
+    *                                   CUSTOM SCRIPTS                            *
+    ********************************************************************************
+    -->
+    <script>
+        window.onload = () => {
+            const hwA = new WritingPanel(document.querySelectorAll('canvas#a.hw'))
+            hwA.init()
+
+            document.getElementById('reset').addEventListener('click', e => {
+                hwA.clear()
+            })
+
+            document.getElementById('save').addEventListener('click', e => {
+                var el = document.getElementById('save')
+                el.setAttribute('download', 'whiteboard.png')
+                el.setAttribute('href', hwA.toPng().replace("image/png", "image/octet-stream"))
+                el.click()
+            })
+
+            document.getElementById('erase').addEventListener('click', e => {
+                hwA.erase()
+            })
+        }
+    </script>
+</body>
+
+</html>
