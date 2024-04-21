@@ -1,4 +1,6 @@
-# EXP_WHITEBOARD_JS
+# exp_whiteboard_js
+
+[![](https://img.shields.io/badge/Canvas-API-orange.svg)](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API)
 
 An experiment to get more acquainted with the [Canvas API](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API) (I was looking into this a long time ago and wanted to revisit this topic).
 
@@ -18,6 +20,8 @@ Good to practice proper Library and SDK design.
 1. Select **Erase**.
 1. Use your mouse to erase specific parts of your drawings.
 2. **Hold-Down** the **Left-Mouse-Button** to do so.
+
+> Select **Erase** again to draw once more!
 
 ### Clear the Whiteboard (Entirely)
 
