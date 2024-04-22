@@ -21,6 +21,7 @@ var isMobile = function () {
             document.getElementById("reset").style.display = "none";
             document.getElementById("save").style.display = "none";
             document.getElementById("erase").style.display = "none";
+            document.getElementById("title-header").style.display = "none";
             window.location.href = "https://render-static-fs.onrender.com/study_guide_notes_2023.html";
             alert("This demo isn't optimized for mobile touch support! Please visit me on a desktop!");
             break;
