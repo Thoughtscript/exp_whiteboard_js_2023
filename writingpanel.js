@@ -14,6 +14,8 @@ const reset = that => {
     that.context.lineJoin = 'round'
     that.context.lineWidth = 5
     that.isEraser = false
+    that.eraseButton = 'Click to Erase'
+    that.sizeButton = 'Make Bigger'
 }
 
 var WritingPanel = function (els) {
@@ -27,6 +29,9 @@ var WritingPanel = function (els) {
 
     this.el = els[0]
     this.context = this.el.getContext("2d")
+
+    this.eraseButton = 'Click to Erase'
+    this.sizeButton = 'Make Bigger'
 }
 
 WritingPanel.prototype.getMousePos = function (e) {
@@ -50,11 +55,20 @@ WritingPanel.prototype.toBlobRect = function() {
 }
 
 WritingPanel.prototype.changeSize = function() {
-    if (this.context.lineWidth === 5) this.context.lineWidth = 15
-    else this.context.lineWidth = 5
+    if (this.context.lineWidth === 5) {
+        this.context.lineWidth = 15
+        this.sizeButton = 'Make Smaller'
+    } else {
+        this.context.lineWidth = 5
+        this.sizeButton = 'Make Bigger'
+    }
 }
 
 WritingPanel.prototype.changeColor = function() {
+    if (this.isEraser) {
+        this.isEraser = !this.isEraser
+        this.eraseButton = 'Click to Erase'
+    }
     if (this.context.strokeStyle === '#ff0000' || this.contextStrokeStyle === 'white') this.context.strokeStyle = 'black'
     else this.context.strokeStyle = '#ff0000'
 }
@@ -85,11 +99,11 @@ WritingPanel.prototype.erase = function() {
 
     if (this.isEraser) {
         this.context.strokeStyle = 'white'
-        this.context.lineCap = 'round'
-        this.context.lineJoin = 'round'
-        this.context.lineWidth = 15
-    
-    } else reset(this)
+        this.eraseButton = 'Click to Draw'
+    } else {
+        this.context.strokeStyle = '#ff0000'
+        this.eraseButton = 'Click to Erase'
+    }
 }
 
 WritingPanel.prototype.init = function () {

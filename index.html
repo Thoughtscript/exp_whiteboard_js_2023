@@ -75,6 +75,8 @@
 
             document.getElementById('reset').addEventListener('click', e => {
                 hwA.clear()
+                document.getElementById('erase').innerHTML = hwA.eraseButton
+                document.getElementById('size').innerHTML = hwA.sizeButton
             })
 
             document.getElementById('save').addEventListener('click', e => {
@@ -86,18 +88,17 @@
 
             document.getElementById('erase').addEventListener('click', e => {
                 hwA.erase()
-                const el = document.getElementById('erase')
-                el.innerHTML = (el.innerText === 'Click to Erase') ? 'Click to Draw' : 'Click to Erase'
+                document.getElementById('erase').innerHTML = hwA.eraseButton
             })
 
             document.getElementById('size').addEventListener('click', e => {
-                hwA.changeSize()
-                const el = document.getElementById('size')
-                el.innerHTML = (el.innerText === 'Make Bigger') ? 'Make Smaller' : 'Make Bigger'
+               hwA.changeSize()
+               document.getElementById('size').innerHTML = hwA.sizeButton
             })
 
             document.getElementById('color').addEventListener('click', e => {
                 hwA.changeColor()
+                document.getElementById('erase').innerHTML = hwA.eraseButton
             })
         }
         </script>
