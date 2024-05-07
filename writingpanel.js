@@ -9,7 +9,7 @@
  */
 
 const reset = that => {
-    that.context.strokeStyle = 'red'
+    that.context.strokeStyle = '#ff0000' // red
     that.context.lineCap = 'round'
     that.context.lineJoin = 'round'
     that.context.lineWidth = 5
@@ -47,6 +47,18 @@ WritingPanel.prototype.drawLine = function (startX, startY, endX, endY) {
 
 WritingPanel.prototype.toBlobRect = function() {
     // For generating CNN images
+}
+
+WritingPanel.prototype.changeSize = function() {
+    if (this.context.lineWidth === 5) this.context.lineWidth = 15
+    else this.context.lineWidth = 5
+}
+
+WritingPanel.prototype.changeColor = function() {
+    console.log(`Before: ${this.context.strokeStyle}`)
+    if (this.context.strokeStyle === '#ff0000' || this.contextStrokeStyle === 'white') this.context.strokeStyle = 'black'
+    else this.context.strokeStyle = '#ff0000'
+    console.log(this.context.strokeStyle)
 }
 
 WritingPanel.prototype.toPng = function() {
