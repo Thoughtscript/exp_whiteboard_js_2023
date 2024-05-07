@@ -8,14 +8,22 @@
  * Helpful examples for drawing circles and curved lines: https://github.com/os1ma/handwriting-canvas/blob/main/LICENSE
  */
 
+const RED = '#ff0000'
+const WHITE = '#ffffff'
+const BLK = '#000000'
+const CLICK_DRAW = 'Click to Draw'
+const CLICK_ERASE = 'Click to Erase'
+const CLICK_BIG = 'Make Bigger'
+const CLICK_SM = 'Make Smaller'
+
 const reset = that => {
-    that.context.strokeStyle = '#ff0000' // red
+    that.context.strokeStyle = RED
     that.context.lineCap = 'round'
     that.context.lineJoin = 'round'
     that.context.lineWidth = 5
     that.isEraser = false
-    that.eraseButton = 'Click to Erase'
-    that.sizeButton = 'Make Bigger'
+    that.eraseButton = CLICK_ERASE
+    that.sizeButton = CLICK_BIG
 }
 
 var WritingPanel = function (els) {
@@ -30,8 +38,8 @@ var WritingPanel = function (els) {
     this.el = els[0]
     this.context = this.el.getContext("2d")
 
-    this.eraseButton = 'Click to Erase'
-    this.sizeButton = 'Make Bigger'
+    this.eraseButton = CLICK_ERASE
+    this.sizeButton = CLICK_BIG
 }
 
 WritingPanel.prototype.getMousePos = function (e) {
@@ -57,20 +65,20 @@ WritingPanel.prototype.toBlobRect = function() {
 WritingPanel.prototype.changeSize = function() {
     if (this.context.lineWidth === 5) {
         this.context.lineWidth = 15
-        this.sizeButton = 'Make Smaller'
+        this.sizeButton = CLICK_SM
     } else {
         this.context.lineWidth = 5
-        this.sizeButton = 'Make Bigger'
+        this.sizeButton = CLICK_BIG
     }
 }
 
 WritingPanel.prototype.changeColor = function() {
     if (this.isEraser) {
         this.isEraser = !this.isEraser
-        this.eraseButton = 'Click to Erase'
+        this.eraseButton = CLICK_ERASE
     }
-    if (this.context.strokeStyle === '#ff0000' || this.contextStrokeStyle === 'white') this.context.strokeStyle = 'black'
-    else this.context.strokeStyle = '#ff0000'
+    if (this.context.strokeStyle === RED || this.context.strokeStyle === WHITE) this.context.strokeStyle = BLK
+    else this.context.strokeStyle = RED
 }
 
 WritingPanel.prototype.toPng = function() {
@@ -98,11 +106,11 @@ WritingPanel.prototype.erase = function() {
     this.isEraser = !this.isEraser
 
     if (this.isEraser) {
-        this.context.strokeStyle = 'white'
-        this.eraseButton = 'Click to Draw'
+        this.context.strokeStyle = WHITE
+        this.eraseButton = CLICK_DRAW
     } else {
-        this.context.strokeStyle = '#ff0000'
-        this.eraseButton = 'Click to Erase'
+        this.context.strokeStyle = RED
+        this.eraseButton = CLICK_ERASE
     }
 }
 
