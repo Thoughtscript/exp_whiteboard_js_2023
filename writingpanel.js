@@ -66,6 +66,7 @@ WritingPanel.prototype.changeSize = function() {
     if (this.context.lineWidth === 5) {
         this.context.lineWidth = 15
         this.sizeButton = CLICK_SM
+        
     } else {
         this.context.lineWidth = 5
         this.sizeButton = CLICK_BIG
@@ -77,6 +78,7 @@ WritingPanel.prototype.changeColor = function() {
         this.isEraser = !this.isEraser
         this.eraseButton = CLICK_ERASE
     }
+
     if (this.context.strokeStyle === RED || this.context.strokeStyle === WHITE) this.context.strokeStyle = BLK
     else this.context.strokeStyle = RED
 }
@@ -108,6 +110,7 @@ WritingPanel.prototype.erase = function() {
     if (this.isEraser) {
         this.context.strokeStyle = WHITE
         this.eraseButton = CLICK_DRAW
+
     } else {
         this.context.strokeStyle = RED
         this.eraseButton = CLICK_ERASE
