@@ -55,10 +55,8 @@ WritingPanel.prototype.changeSize = function() {
 }
 
 WritingPanel.prototype.changeColor = function() {
-    console.log(`Before: ${this.context.strokeStyle}`)
     if (this.context.strokeStyle === '#ff0000' || this.contextStrokeStyle === 'white') this.context.strokeStyle = 'black'
     else this.context.strokeStyle = '#ff0000'
-    console.log(this.context.strokeStyle)
 }
 
 WritingPanel.prototype.toPng = function() {
